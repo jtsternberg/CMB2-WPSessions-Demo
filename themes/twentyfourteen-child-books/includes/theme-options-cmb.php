@@ -2,20 +2,21 @@
 /**
  * CMB2 Theme Options
  * @version 0.1.0
+ * @link https://github.com/WebDevStudios/CMB2-Snippet-Library/blob/master/options-and-settings-pages/theme-options-cmb.php
  */
-class Myprefix_Admin {
+class Twentyfourteenbooks_Admin {
 
 	/**
  	 * Option key, and option page slug
  	 * @var string
  	 */
-	private $key = 'myprefix_options';
+	private $key = 'twentyfourteenbooks_options';
 
 	/**
  	 * Options page metabox id
  	 * @var string
  	 */
-	private $metabox_id = 'myprefix_option_metabox';
+	private $metabox_id = 'twentyfourteenbooks_option_metabox';
 
 	/**
 	 * Options Page title
@@ -35,7 +36,7 @@ class Myprefix_Admin {
 	 */
 	public function __construct() {
 		// Set our title
-		$this->title = __( 'Site Options', 'myprefix' );
+		$this->title = __( 'Site Options', 'wpsessions' );
 	}
 
 	/**
@@ -100,16 +101,15 @@ class Myprefix_Admin {
 		// Set our CMB2 fields
 
 		$cmb->add_field( array(
-			'name' => __( 'Test Text', 'myprefix' ),
-			'desc' => __( 'field description (optional)', 'myprefix' ),
+			'name' => __( 'Test Text', 'wpsessions' ),
+			'desc' => __( 'field description (optional)', 'wpsessions' ),
 			'id'   => 'test_text',
 			'type' => 'text',
-			'default' => 'Default Text',
 		) );
 
 		$cmb->add_field( array(
-			'name'    => __( 'Test Color Picker', 'myprefix' ),
-			'desc'    => __( 'field description (optional)', 'myprefix' ),
+			'name'    => __( 'Test Color Picker', 'wpsessions' ),
+			'desc'    => __( 'field description (optional)', 'wpsessions' ),
 			'id'      => 'test_colorpicker',
 			'type'    => 'colorpicker',
 			'default' => '#bada55',
@@ -135,14 +135,14 @@ class Myprefix_Admin {
 }
 
 /**
- * Helper function to get/return the Myprefix_Admin object
+ * Helper function to get/return the Twentyfourteenbooks_Admin object
  * @since  0.1.0
- * @return Myprefix_Admin object
+ * @return Twentyfourteenbooks_Admin object
  */
-function myprefix_admin() {
+function twentyfourteenbooks_admin() {
 	static $object = null;
 	if ( is_null( $object ) ) {
-		$object = new Myprefix_Admin();
+		$object = new Twentyfourteenbooks_Admin();
 		$object->hooks();
 	}
 
@@ -155,9 +155,9 @@ function myprefix_admin() {
  * @param  string  $key Options array key
  * @return mixed        Option value
  */
-function myprefix_get_option( $key = '' ) {
-	return cmb2_get_option( myprefix_admin()->key, $key );
+function twentyfourteenbooks_get_option( $key = '' ) {
+	return cmb2_get_option( twentyfourteenbooks_admin()->key, $key );
 }
 
 // Get it started
-myprefix_admin();
+twentyfourteenbooks_admin();

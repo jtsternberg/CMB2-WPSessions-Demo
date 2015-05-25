@@ -11,3 +11,62 @@ function twentyfourteenbooks_includes() {
 
 // Include our includes!
 twentyfourteenbooks_includes();
+
+
+/**
+ * Replaces the page title on the homepage with the custom slogan field (if it exists)
+ *
+ * @param  string  $title Page title
+ *
+ * @return string         Maybe-modified page title
+ */
+function twentyfourteenbooks_replace_homepage_title_with_slogan( $title ) {
+	// If we're not on the homepage, just pass the title back
+	if ( ! is_front_page() ) {
+		return $title;
+	}
+
+	// If we find a slogan on the homepage, use that instead.
+	if ( $slogan = get_post_meta( get_the_ID(), '_twentyfourteenbooks_front_slogan', 1 ) ) {
+		return $slogan;
+	}
+
+	return $title;
+}
+add_filter( 'the_title', 'twentyfourteenbooks_replace_homepage_title_with_slogan' );
+
+/**
+ * Display frontpage random splash image
+ * @link https://github.com/WebDevStudios/CMB2/wiki/Field-Types#file_list Example/Docs
+ */
+function twentyfourteenbook_splash_image() {
+	$images = get_post_meta( get_the_ID(), '_twentyfourteenbooks_front_splash_images', 1 );
+
+	// If we saved data, it will be an array
+	if ( is_array( $images ) ) {
+		// Get random attachment ID
+		$attach_id = array_rand( $images );
+
+		// And display the image
+		printf( '<p class="front-page-splash">%s</p>', wp_get_attachment_image( $attach_id, 'large' ) );
+	}
+}
+
+/**
+ * Display frontpage video embed
+ * @link https://github.com/WebDevStudios/CMB2/wiki/Field-Types#oembed Example/Docs
+ */
+function twentyfourteenbook_video_and_desc() {
+	$video = get_post_meta( get_the_ID(), '_twentyfourteenbooks_front_embed', 1 );
+
+	// Check if we have a video
+	if ( ! empty( $video ) ) {
+		echo '<div class="front-page-embed">';
+		// Display embed
+		echo wp_oembed_get( esc_url( $video ) );
+		if ( $desc = get_post_meta( get_the_ID(), '_twentyfourteenbooks_front_embed_desc', 1 ) ) {
+			printf( '<p class="front-page-embed-description">%s</p>', $desc );
+		}
+		echo '</div>';
+	}
+}

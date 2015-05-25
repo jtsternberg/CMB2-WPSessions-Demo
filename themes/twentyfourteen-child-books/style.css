@@ -11,3 +11,9 @@ Template: twentyfourteen
 */
 
 @import url("../twentyfourteen/style.css");
+
+.front-page-embed {
+	background: #eee;
+	padding: 10px 10px 1px;
+	margin-bottom: 24px;
+}

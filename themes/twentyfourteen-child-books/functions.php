@@ -6,6 +6,7 @@
 function twentyfourteenbooks_includes() {
 	$dir = get_stylesheet_directory();
 
+	include $dir . '/includes/custom-cmb-field-types.php';
 	include $dir . '/includes/cmb-fields.php';
 	include $dir . '/includes/theme-options-cmb.php';
 }

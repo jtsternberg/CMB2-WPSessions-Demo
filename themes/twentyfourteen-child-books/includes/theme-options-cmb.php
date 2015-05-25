@@ -100,19 +100,51 @@ class Twentyfourteenbooks_Admin {
 
 		// Set our CMB2 fields
 
+		/*
+		 * Custom address field, https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-field-types#example-4-multiple-inputs-one-field-lets-create-an-address-field
+		 */
 		$cmb->add_field( array(
-			'name' => __( 'Test Text', 'wpsessions' ),
-			'desc' => __( 'field description (optional)', 'wpsessions' ),
-			'id'   => 'test_text',
-			'type' => 'text',
+			'name' => __( 'Business Address', 'wpsessions' ),
+			'desc' => __( 'Enter the address for contact.', 'wpsessions' ),
+			'id'   => 'address',
+			'type' => 'address',
 		) );
 
 		$cmb->add_field( array(
-			'name'    => __( 'Test Color Picker', 'wpsessions' ),
-			'desc'    => __( 'field description (optional)', 'wpsessions' ),
-			'id'      => 'test_colorpicker',
-			'type'    => 'colorpicker',
-			'default' => '#bada55',
+			'name'       => __( 'Business Phone', 'wpsessions' ),
+			'id'         => 'phone',
+			'type'       => 'text',
+			'attributes' => array(
+				'type' => 'phone',
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Contact Email', 'wpsessions' ),
+			'id'      => 'email',
+			'type'    => 'text_email',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Hours of Operation', 'wpsessions' ),
+			'id'      => 'hours',
+			'type'    => 'text_medium',
+			'attributes' => array(
+				'placeholder' => __( 'M-F 9:30-5:00 EST', 'wpsessions' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Footer Text', 'wpsessions' ),
+			'desc'    => __( 'contains address/copyright, etc.', 'wpsessions' ),
+			'id'      => 'settingstitle',
+			'type'    => 'title',
+		) );
+
+		$cmb->add_field( array(
+			'id'      => 'footer_text',
+			'type'    => 'wysiwyg',
+			'options' => array( 'textarea_rows' => 8, ),
 		) );
 
 	}

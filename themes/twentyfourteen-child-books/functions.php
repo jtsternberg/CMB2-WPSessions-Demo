@@ -72,3 +72,57 @@ function twentyfourteenbook_video_and_desc() {
 		echo '</div>';
 	}
 }
+
+
+/**
+ * Show the address if the address field is not empty
+ */
+function twentyfourteenbooks_address_field() {
+	$address = twentyfourteenbooks_get_option( 'address' );
+	if ( empty( $address ) ) {
+		return;
+	}
+
+	// Set default values for each address key
+	$address = wp_parse_args( $address, array(
+	    'address-1' => '',
+	    'address-2' => '',
+	    'city'      => '',
+	    'state'     => '',
+	    'zip'       => '',
+	) );
+
+	?>
+	<div class="business-address">
+		<h6><?php _e( 'Address:', 'wpsessions' ); ?></h6>
+		<p>
+			<?php echo esc_html( $address['address-1'] ); ?>
+			<?php if ( $address['address-2'] ) : ?>
+				<br><?php echo esc_html( $address['address-2'] ); ?>
+			<?php endif; ?>
+		</p>
+		<p><?php echo esc_html( $address['city'] ); ?>, <?php echo esc_html( $address['state'] ); ?> <?php echo esc_html( $address['zip'] ); ?></p>
+	</div>
+	<?php
+}
+
+function twentyfourteenbooks_footer_info() {
+	twentyfourteenbooks_address_field();
+
+	if ( $phone = twentyfourteenbooks_get_option( 'phone' ) ) {
+		printf( '<p class="business-phone"><h6>%s</h6>%s</p>', __( 'Phone', 'wpsessions' ), $phone );
+	}
+
+	if ( $email = twentyfourteenbooks_get_option( 'email' ) ) {
+		printf( '<p class="business-email"><h6>%s</h6>%s</p>', __( 'Email', 'wpsessions' ), $email );
+	}
+
+	if ( $hours = twentyfourteenbooks_get_option( 'hours' ) ) {
+		printf( '<p class="business-hours"><h6>%s</h6>%s</p>', __( 'Hours of Operation', 'wpsessions' ), $hours );
+	}
+
+	if ( $footer_text = twentyfourteenbooks_get_option( 'footer_text' ) ) {
+		printf( '<div class="business-footer-text">%s</div>', wpautop( $footer_text ) );
+	}
+}
+add_action( 'twentyfourteen_credits', 'twentyfourteenbooks_footer_info' );

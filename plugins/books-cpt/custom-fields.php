@@ -59,5 +59,12 @@ function bookcpt_register_demo_metabox() {
 		'type'       => 'text_url',
 	) );
 
+	$cmb->add_field( array(
+		'name'      => __( 'Select Related Books', 'books-cpt' ),
+		'id'        => $prefix . 'related',
+		'type'      => 'post_search_text',
+		'post_type' => 'book',
+	) );
+
 }
 add_action( 'cmb2_init', 'bookcpt_register_demo_metabox' );

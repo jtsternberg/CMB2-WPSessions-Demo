@@ -25,7 +25,7 @@ function bookcpt_genre_taxonomy() {
 	$args = array(
 		'hierarchical'      => true,
 		'labels'            => $labels,
-		'show_ui'           => true,
+		'show_ui'           => false, // Keep UI hidden. Will use CMB2 for selection
 		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'genre' ),

@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Books CPT
 * Plugin URI:  https://github.com/jtsternberg/CMB2-WPSessions-Demo/
-* Description: Adds a 'Book' CPT to WordPress and corresponding CMB2 custom fields
+* Description: Adds a 'Book' CPT to WordPress and corresponding CMB2 custom fields. <strong>Note:</strong> This plugin will not fully function without CMB2.
 * Version:     0.1.0
 * Author:      jtsternberg
 * Author URI:  http://dsgnwrks.pro
@@ -17,6 +17,7 @@ function bookscpt_includes() {
 
 	include $dir . '/cpt.php';
 	include $dir . '/taxonomy.php';
+	include $dir . '/custom-fields.php';
 }
 
 // Include our includes!

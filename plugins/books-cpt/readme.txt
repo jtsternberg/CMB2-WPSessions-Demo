@@ -11,7 +11,7 @@ License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Adds a 'Book' CPT to WordPress and corresponding CMB2 custom fields
+Adds a 'Book' CPT to WordPress and corresponding CMB2 custom fields. **Note:** This plugin will not fully function without CMB2.
 
 == Installation ==
 

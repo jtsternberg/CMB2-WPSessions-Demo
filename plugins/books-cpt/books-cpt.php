@@ -19,6 +19,7 @@ function bookscpt_includes() {
 	include $dir . '/taxonomy.php';
 	include $dir . '/custom-fields.php';
 	include $dir . '/template-filters.php';
+	include $dir . '/submission-form-shortcode.php';
 }
 
 // Include our includes!

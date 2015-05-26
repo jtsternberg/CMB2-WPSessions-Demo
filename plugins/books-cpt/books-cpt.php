@@ -18,6 +18,7 @@ function bookscpt_includes() {
 	include $dir . '/cpt.php';
 	include $dir . '/taxonomy.php';
 	include $dir . '/custom-fields.php';
+	include $dir . '/template-filters.php';
 }
 
 // Include our includes!
